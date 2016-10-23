@@ -10,7 +10,7 @@ function log(o) {
     if(stream) { 
       stream.end(); 
       setTimeout(() =>
-        sh.exec('/usr/bin/xz -9 ' + __dirname + '/' + fname),
+        sh.exec('xz -9 ' + __dirname + '/' + fname),
         3000);
       fs.writeFile(__dirname + "/public/" + ts.replace(/[^-0-9]/g,'-') + '.json', 
         JSON.stringify(stat), 'utf-8');
