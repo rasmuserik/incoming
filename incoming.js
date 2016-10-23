@@ -26,6 +26,7 @@ function log(o) {
 require('http').createServer(function(req, res) {
   var o = req.headers;
   if(req.method === "POST") {
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     var s = "";
     var logId = ("" + Math.random()).slice(2);
     o.logId = logId;
@@ -56,6 +57,7 @@ require('http').createServer(function(req, res) {
     });
   } else {
     if(req.url.startsWith("/log.js?")) {
+      res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
       res.end("");
       o.type = "get/" + req.url.slice(8);
       o.timestamp = (new Date()).toISOString();
