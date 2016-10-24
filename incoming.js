@@ -27,6 +27,7 @@ function log(o) {
 require('http').createServer(function(req, res) {
   var o = req.headers;
   if(req.method === "POST") {
+    if(o["x-real-ip"] === "77.75.164.25") { return res.end(""); }
     res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     var s = "";
     var logId = ("" + Math.random()).slice(2);
@@ -58,6 +59,7 @@ require('http').createServer(function(req, res) {
     });
   } else {
     if(req.url.startsWith("/log.js?")) {
+      if(o["x-real-ip"] === "77.75.164.25") { return res.end(""); }
       res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
       res.end("");
       o.type = "get/" + req.url.slice(8);
