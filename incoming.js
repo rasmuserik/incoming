@@ -9,8 +9,9 @@ function log(o) {
   if(fname2 !== fname) {
     if(stream) { 
       stream.end(); 
+      var prevFname = fname;
       setTimeout(() =>
-        sh.exec('xz -9 ' + fname),
+        sh.exec('xz -9 ' + prevFname),
         3000);
       fs.writeFile(__dirname + "/public/" + ts.replace(/[^-0-9]/g,'-') + '.json', 
         JSON.stringify(stat), 'utf-8');
