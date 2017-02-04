@@ -27,7 +27,10 @@ function log(o) {
 require('http').createServer(function(req, res) {
   var o = req.headers;
   if(req.method === "POST") {
-    if(o["x-real-ip"] === "77.75.164.25") { return res.end(""); }
+    if( o["x-real-ip"] === "77.75.164.25" ||
+        o["x-real-ip"] === "79.98.198.139" ||
+        o["x-real-ip"] === "90.185.98.167"
+        ) { return res.end(""); }
     res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     var s = "";
     var logId = ("" + Math.random()).slice(2);
